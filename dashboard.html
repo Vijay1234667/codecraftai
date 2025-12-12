@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AdCortex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a,
+        li {
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        [type="reset"],
+        [type="submit"],
+        button,
+        html [type="button"] {
+            outline: none;
+        }
+
+        button {
+            border: none;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            overflow: hidden;
+            overflow-y: auto;
+            transition: opacity 0.5s 0.3s ease-in-out;
+            background: radial-gradient(circle at 30% 20%,
+                    #f4f5f5 0%,
+                    #eeeef1 40%,
+                    #f2f2f4 100%);
+            background-blend-mode: normal;
+        }
+
+        /* custom classes */
+        .font-10 {
+            font-size: 10px;
+        }
+
+        .font-11 {
+            font-size: 11px;
+        }
+
+        .font-12 {
+            font-size: 12px;
+        }
+
+        .font-13 {
+            font-size: 13px;
+        }
+
+        .font-14 {
+            font-size: 14px;
+        }
+
+        .font-15 {
+            font-size: 15px;
+        }
+
+        .font-16 {
+            font-size: 16px;
+        }
+
+        .font-20 {
+            font-size: 20px;
+        }
+
+        .font-24 {
+            font-size: 24px;
+        }
+
+        .font-26 {
+            font-size: 26px;
+        }
+
+        .font-18 {
+            font-size: 18px;
+        }
+
+        .fw-400 {
+            font-weight: 400;
+        }
+
+        .fw-500 {
+            font-weight: 500;
+        }
+
+        .fw-600 {
+            font-weight: 600;
+        }
+
+        .fw-700 {
+            font-weight: 700;
+        }
+
+        .mt-70 {
+            margin-top: 70px;
+        }
+
+        .p-10 {
+            padding: 10px;
+        }
+
+        .font-30 {
+            font-size: 30px;
+        }
+
+
+        .color-body-text {
+            color: #737373;
+        }
+
+        .bg-primary-orange {
+            background-color: #D08700;
+            color: #fff;
+        }
+
+        .border-primary-dark {
+            border: 0.8px solid #262626;
+        }
+
+        .bg-primary-green {
+            background-color: #00c950;
+        }
+
+        .bg-primary-purple {
+            background: linear-gradient(90deg, #9810FA 0%, #8200DB 100%);
+
+        }
+
+        .bg-primary-dark {
+            background-color: #171717;
+            color: #fff;
+        }
+
+        .bdr-8 {
+            border-radius: 8px;
+        }
+
+        .bdr-6 {
+            border-radius: 6px;
+        }
+
+        .bdr-34 {
+            border-radius: 34px;
+
+        }
+
+        .bdr-10 {
+            border-radius: 10px;
+        }
+
+        .bdr-btm {
+            border-bottom: 0.8px solid #e5e5e5;
+        }
+
+        .border-secondary-muted {
+            border: 1px solid #ced4da;
+        }
+
+        .bg-primary-blue {
+            background-color: #0071e3;
+        }
+
+        .color-primary-dark {
+            color: #171717;
+        }
+
+        .border-btn {
+            border: 0.1px solid #26262642;
+        }
+
+        .hover-btn-dark:hover {
+            background-color: #171717;
+            color: #FFFF;
+            box-shadow: none;
+        }
+
+        .sidebar {
+            z-index: 1100 !important;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #ffff;
+            border-right: 0.8px solid #26262642;
+            padding: 20px 10px;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            overflow-x: hidden;
+        }
+
+        /* .sidebar.closed {
+  transform: translateX(-100%);
+} */
+
+        .sidebar .sidebar-menu {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .sidebar .nav-item {
+            margin: 8px 0px;
+        }
+
+        .sidebar .nav-link {
+            margin: 8px 0px;
+            padding: 12px 16px;
+            color: #171717;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #0071e3;
+            color: #fff;
+        }
+
+
+
+        .nav-link.active-link {
+            background-color: #0071e3 !important;
+            color: #fff !important;
+            border-radius: 8px;
+        }
+
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            width: calc(100% - 260px);
+            transition: margin-left 0.3s ease, width 0.3s ease;
+        }
+
+        .main-content.expanded {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #ffff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-left: 260px;
+        }
+
+        .top-bar {
+            z-index: 1000;
+        }
+
+        .top-bar select {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .user-profile {
+            cursor: pointer;
+        }
+
+        .navbar-right-user-details .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #0071e3 0%, #005bb5 100%);
+        }
+
+        .menu-toggle {
+            display: none;
+            background-color: #fff;
+            border: none;
+            color: #171717;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Dashboard Section */
+        .dashboard-page-section {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .dashboard-nav-tab-section .nav-pills {
+            background-color: #ffff;
+            border: 0.1px solid #26262642;
+            box-shadow: 0px 8px 30px 0px #0000000a;
+            border-radius: 34px;
+            font-size: 13px;
+            padding: 3px 0px;
+        }
+
+        .dashboard-nav-tab-section .nav-pills .nav-link.active {
+            color: #ffffff !important;
+        }
+
+        .dashboard-nav-tab-section .nav-pills .nav-link {
+            border-radius: 23px !important;
+            margin: 0px 6px;
+            color: #737373;
+        }
+
+        /* Stats Cards */
+        .dashboard-nav-tab-section .stats-card {
+            border: 0.8px solid #26262642;
+            box-shadow: 0px 8px 30px 0px #0000000a;
+            border-radius: 10px;
+            padding: 15px 18px;
+        }
+
+        .table-card {
+            border: 0.8px solid #26262642;
+            box-shadow: 0px 8px 30px 0px #0000000a;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .bootstrap-table-section .dt-length {
+            display: none;
+        }
+
+        .dt-search {
+            display: none;
+        }
+
+        .dt-layout-cell {
+            padding: 0px !important;
+        }
+
+        .bootstrap-table-section .table th {
+            vertical-align: middle !important;
+            padding: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #171717;
+            text-transform: uppercase;
+            background-color: #dedede !important;
+            border-bottom: 0.8px solid #dedede !important;
+        }
+
+        .bootstrap-table-section .table td {
+            padding: 20px;
+            color: #171717;
+            border-bottom: 0.8px solid #dedede !important;
+            background: #ffff !important;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+
+        table.dataTable th.dt-type-numeric,
+        table.dataTable th.dt-type-date,
+        table.dataTable td.dt-type-numeric,
+        table.dataTable td.dt-type-date {
+            text-align: center;
+        }
+
+
+        .bootstrap-table-section .dt-info {
+            font-size: 14px;
+            color: #171717;
+            font-weight: 500;
+        }
+
+        .bootstrap-table-section .pagination {
+            font-size: 14px;
+            color: #171717;
+            font-weight: 500;
+        }
+
+        .bootstrap-table-section .ctr-badge {
+            background: #0071e333;
+            color: #0071e3;
+            font-size: 13px;
+            border-radius: 34px;
+            font-weight: 500;
+            border: 0.8px solid #26262642;
+
+        }
+
+        .dt-info {
+            padding-left: 20px;
+        }
+
+        .dt-paging {
+            padding-right: 20px;
+            padding-bottom: 10px;
+        }
+
+        .hover-cell {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hover-cell .cell-icons {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) translateX(-100%);
+            opacity: 0;
+            display: flex;
+            gap: 0.4rem;
+            transition: all 0.3s ease;
+            color: #0d6efd;
+        }
+
+        .hover-cell .cell-icons i {
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            padding: 0.45rem;
+            font-size: 0.9rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .hover-cell .cell-text {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            padding-left: 0;
+        }
+
+        /* Effect on full row hover */
+        tr:hover .hover-cell .cell-icons {
+            transform: translateY(-50%) translateX(0);
+            opacity: 1;
+        }
+
+        tr:hover .hover-cell .cell-text {
+            transform: translateX(2.6rem);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+
+
+
+        /* list-filter-body-section */
+        .campaign-list-page {
+            padding: 20px 0px 20px;
+        }
+
+        .list-filter-body-section .card {
+            padding: 13px 14px;
+            background-color: #ffff;
+            border-radius: 13px;
+            box-shadow: 0px 8px 30px 0px #0000000a;
+        }
+
+        /*  */
+
+        .create-campaign-page .campaign-top-details .active-card .active-step-number {
+            color: #fff;
+            font-size: 19px;
+            font-weight: 500;
+            height: 40px;
+            width: 40px;
+            background-color: #0071e3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .create-campaign-page .campaign-top-details .step-number {
+            color: #737373;
+            font-size: 19px;
+            font-weight: 500;
+            height: 40px;
+            width: 40px;
+            background-color: #262626;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .create-campaign-page .form-card {
+            background: #ffffff;
+            border-radius: 10px;
+            border: 0.8px solid #26262642;
+            color: #171717;
+            transition: all 0.3s ease;
+        }
+
+        .create-campaign-page .form-card .form-label {
+            font-weight: 500;
+            color: #171717;
+            font-size: 15px;
+        }
+
+        .create-campaign-page .form-card .form-control,
+        .form-select {
+            border-radius: 8px;
+            border: 1px solid #26262642;
+            color: #171717;
+            padding: 7px 12px;
+            font-size: 14px;
+        }
+
+
+
+
+        /* Reporting & Analytics */
+        .stats-cards-section .stats-card {
+            border: 1px solid #26262642;
+            box-shadow: 0px 8px 30px 0px #0000000a;
+            border-radius: 12px;
+            padding: 20px 20px;
+        }
+
+        /*  */
+
+        /* Scope all styles to avoid conflicts */
+        .setting-form-details .info-card {
+            border-radius: 18px;
+            box-shadow: 0px 8px 30px 0px #0000000a;
+            background: #fff;
+            transition: all 0.3s ease;
+            border: 1px solid #26262642;
+
+        }
+
+        .setting-form-details .form-control {
+            border-radius: 8px;
+            border: 1px solid #26262642;
+            color: #171717;
+            padding: 7px 12px;
+            font-size: 14px;
+        }
+
+        .setting-form-details label {
+            font-weight: 500;
+            color: #171717;
+            font-size: 15px;
+        }
+
+        .setting-form-details .form-control::placeholder {
+            color: #171717;
+        }
+
+        .setting-information-form .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            color: #ffffff !important;
+            border-radius: 34px;
+            background-color: #0071e3 !important;
+        }
+
+        .setting-information-form .nav-pills .nav-link {
+            color: #171717;
+        }
+
+        .setting-information-form .nav-pills .nav-link.active,
+        .nav-pills {
+            background-color: #fff;
+            box-shadow: 0px 8px 30px 0px #0000000a;
+            color: #ffffff !important;
+            border-radius: 34px;
+            font-size: 14px;
+            padding: 8px;
+            border: 1px solid #26262642;
+
+        }
+
+
+        .view-campaigndetails-page .nav-pills .nav-link.active,
+        .nav-pills {
+            background-color: #fff;
+            box-shadow: 0px 8px 30px 0px #0000000a;
+            color: #171717 !important;
+            border-radius: 10px;
+            font-size: 14px;
+            padding: 8px 20px;
+            border: 1px solid #26262642;
+        }
+
+
+        .view-campaigndetails-page .nav-pills .nav-link {
+            color: #171717;
+        }
+    </style>
+
+    <style>
+        /* Responsive */
+@media (max-width: 991px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    
+  }
+
+  .top-bar {
+    padding: 15px 20px;
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-campaign-page {
+    padding-top: 83px !important;
+  }
+
+  .setting-dashboard-page {
+    padding-top: 83px !important;
+  }
+
+  .dashboard-page-section {
+    padding: 20px 15px;
+  }
+
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+
+  .stats-value {
+    font-size: 2rem;
+  }
+  
+
+  .connect-btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+
+
+
+@media (min-width: 991px) and (max-width: 1148px) {
+  .top-bar {
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .p-10 {
+    padding: 0px;
+}
+}
+
+@media (max-width: 768px) {
+  .text-paragraph-xl {
+    font-size: 15px;
+  }
+
+  .text-paragraph-lg {
+    font-size: 15px;
+  }
+
+  .text-paragraph-md {
+    font-size: 13px;
+  }
+
+  .stats-section .stat-number {
+    font-size: 30px;
+  }
+
+  .menu-toggle {
+    padding: 2px 0px;
+  }
+
+  .fixed-top .form-select {
+    padding: 4px 5px;
+  }
+
+  .top-bar {
+    padding: 4px 15px;
+  }
+
+  .p-10 {
+    padding: 0px;
+  }
+
+  .dashboard-page-section {
+    padding-top: 50px !important;
+  }
+
+.setting-information-form .nav-pills .nav-link.active, .nav-pills {
+    border-radius: 10px;
+  
+}
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="mb-3 bdr-btm pb-3">
+            <a href="index.html">
+                <img class="img-fluid  logo ms-2"
+                    src="https://ik.imagekit.io/gku4adhog/AppleAd2/logo.svg?updatedAt=1762258561187" alt="logo"
+                    loading="lazy">
+            </a>
+        </div>
+
+        <ul class="sidebar-menu p-0">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="fa-solid fa-border-all me-1"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#campaignMenu" role="button"
+                    aria-expanded="true" aria-controls="campaignMenu">
+                    <i class="fa-solid fa-bullhorn me-1"></i>
+                    Campaign
+                </a>
+                <div class="collapse ps-2" id="campaignMenu">
+                    <a href="javascript:void(0)" class="nav-link">
+                        <i class="fa-solid fa-list me-1"></i> Campaign List
+                    </a>
+                    <a href="javascript:void(0)" class="nav-link">
+                        <i class="fa-solid fa-plus me-1"></i> Create Campaign
+                    </a>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="fa-solid fa-chart-line me-1"></i>
+                    Reporting
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="fa-solid fa-gamepad me-1"></i>
+                    Creative
+                </a>
+            </li>
+        </ul>
+
+        <div>
+            <ul class="p-0">
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="nav-link">
+                        <i class="fa-solid fa-question me-1"></i>
+                        Help & Support
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="nav-link">
+                        <i class="fa-solid fa-gear me-1"></i>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+
+
+
+    <div class="main-content" id="mainContent">
+        <div class="top-bar fixed-top bdr-btm">
+            <div class="d-flex align-items-baseline border-secondary-muted bdr-8 px-1 py-1 mb-2 mb-md-0">
+                <div>
+                    <img src="https://ik.imagekit.io/gku4adhog/AppleAd2/greensignal.svg?updatedAt=1762320141364"
+                        alt="greensignal">
+                </div>
+                <select class="form-select w-auto shadow-none  border-0">
+                    <option selected value="meta">Acme Corporation</option>
+                    <option value="shopify">Shopify - E-Commerce Store</option>
+                    <option value="amazon">Amazon - E-Commerce Store</option>
+                    <option value="walmart">Walmart - E-Commerce Store</option>
+                </select>
+            </div>
+
+            <div class="navbar-right-user-details">
+                <div class="profile-header d-flex align-items-center">
+                    <div class="icon-group border-end pe-3 me-3 d-flex align-items-center">
+                        <div class="icon-btn">
+                            <a href="javascript:void(0)"><i class="fas fa-bell color-body-text"></i></a>
+                            <a href="javascript:void(0)"><i class="fas fa-cog color-body-text ms-3"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="header-right-login-user-details me-3">
+                        <div class="dropdown">
+                            <button
+                                class="user-profile bg-transparent d-flex align-items-center dropdown-toggle border-0 shadow-none"
+                                type="button" data-bs-toggle="dropdown">
+                                <div
+                                    class="user-avatar text-white font-13 fw-500 d-flex justify-content-center align-items-center">
+                                    JD</div>
+                                <div class="ms-2 me-2">
+                                    <h6 class="font-14 fw-500 mb-0">John Doe</h6>
+                                    <small class="font-13 color-body-text">Admin</small>
+                                </div>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item font-14" href="javascript:void(0)"><i
+                                            class="fa-solid fa-gear me-2"></i>Settings</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item font-14 text-danger" href="javascript:void(0)"><i
+                                            class="fa-solid fa-right-from-bracket me-2 text-danger"></i>Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <section class="dashboard-page-section p-10 mt-70">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-2 mb-lg-3 mb-md-2">
+                            <h1 class="font-24 fw-700 color-primary-dark">Dashboard</h1>
+                            <p class="color-body-text font-15 mb-0">Get a complete overview of your campaign performance
+                                in
+                                real time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- NEXT SECTION WILL START FROM HERE -->
+
+    </div>
+
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script src="./js/bootstrap.bundle.js"></script>
+
+
+    <script>
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPage = location.pathname.split("/").pop();
+            const campaignMenu = document.getElementById("campaignMenu");
+            const links = campaignMenu.querySelectorAll(".nav-link");
+
+            links.forEach((link) => {
+                const href = link.getAttribute("href");
+                if (href === currentPage) {
+                    link.classList.add("active-link");
+                    campaignMenu.classList.add("show");
+                    document
+                        .querySelector('[href="#campaignMenu"]')
+                        .setAttribute("aria-expanded", "true");
+                }
+            });
+        });
+
+    </script>
+
+
+    <script>
+        // Sidebar Toggle for Mobile
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("mainContent");
+
+        menuToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("open");
+            document.body.classList.toggle("sidebar-open");
+
+            const icon = menuToggle.querySelector("i");
+            if (sidebar.classList.contains("open")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
+        });
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

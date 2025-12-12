@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarnX.ai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+        * {
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        :root {
+            --text-dark: #2a2a2a;
+            --text-sky-blue: #1937d338;
+            --text-white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            scroll-padding-top: 120px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-weight: 400;
+            overflow-x: hidden;
+            font-family: sans-serif;
+            scrollbar-width: none;
+        }
+
+
+        a,
+        li {
+            text-decoration: none;
+        }
+
+        a:hover,
+        li:hover {
+            text-decoration: none;
+        }
+
+        [type="reset"],
+        [type="submit"],
+        button,
+        html [type="button"] {
+            outline: none;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        /* Common Classes */
+
+        .fs-13 {
+            font-size: 13px;
+        }
+
+        .fs-14 {
+            font-size: 14px;
+        }
+
+        .fs-15 {
+            font-size: 15px;
+        }
+
+        .fs-16 {
+            font-size: 16px;
+        }
+
+        .fs-18 {
+            font-size: 18px;
+        }
+
+        .fs-20 {
+            font-size: 20px;
+        }
+
+        .fs-22 {
+            font-size: 22px;
+        }
+
+        .fs-24 {
+            font-size: 24px;
+        }
+
+        .fw-300 {
+            font-weight: 300;
+        }
+
+        .fw-400 {
+            font-weight: 400;
+        }
+
+        .fw-500 {
+            font-weight: 500;
+        }
+
+        .fw-600 {
+            font-weight: 600;
+        }
+
+        .fw-700 {
+            font-weight: 700;
+        }
+
+        .mt-100 {
+            margin-top: 100px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1107px;
+            padding: 0 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        h3 {
+            font-family: "Instrument Sans", sans-serif;
+            font-size: 45px;
+            font-weight: 600;
+            text-shadow: 0px 4px 4px #a7a7a740;
+        }
+
+        /*  */
+        .navbar {
+            box-shadow: 0px 1px 31px 0px #00000014;
+            padding: 10px 0px;
+            background: #1a1a1a;
+            padding: 12px 0px;
+        }
+
+        .logo {
+            width: 165px;
+            height: 28.3px;
+        }
+
+        #logo-img {
+            transition: all 0.3s ease;
+        }
+
+        #navbar.scrolled {
+            background-color: white;
+        }
+
+        #navbar.scrolled .navbar-nav a {
+            color: black;
+            transition: color 0.3s ease;
+        }
+
+        #navbar.scrolled .custom-toggler span {
+            background-color: #000000;
+        }
+
+        .navbar .navbar-nav a {
+            color: var(--text-white);
+            font-family: "Figtree", sans-serif;
+            transition: color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .custom-toggler {
+            width: 30px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .custom-toggler span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2px;
+            opacity: 1;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #nav-icon.dark-toggler {
+            background-color: black;
+        }
+
+        .custom-toggler span:nth-child(1) {
+            top: 0px;
+        }
+
+        .custom-toggler span:nth-child(2),
+        .custom-toggler span:nth-child(3) {
+            top: 10px;
+        }
+
+        .custom-toggler span:nth-child(4) {
+            top: 20px;
+        }
+
+        .custom-toggler.open span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+
+        .custom-toggler.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .custom-toggler.open span:nth-child(3) {
+            opacity: 0;
+        }
+
+        .custom-toggler.open span:nth-child(4) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+
+        /*  */
+        .trust-badge {
+            background: var(--text-sky-blue);
+            width: fit-content;
+            margin: auto;
+            padding: 6px 26px;
+            border-radius: 60px;
+            gap: 10px;
+        }
+
+        .trust-badge .trusted-text {
+            font-weight: 500;
+            font-size: 16px;
+            font-family: "GeneralSans";
+        }
+
+        .trust-avatars img {
+            width: 27px;
+            margin-left: -13px;
+        }
+
+        .trust-avatars {
+            display: flex;
+        }
+
+        .banner-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-section::before {
+            content: "";
+            position: absolute;
+            background: url(./assets/image/bannerbgblue.jpg);
+            background-repeat: no-repeat;
+            background-position: center top;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .banner-section h1 {
+            font-size: 64px;
+            letter-spacing: -1.92px;
+            font-family: "Instrument Sans", sans-serif;
+        }
+
+        .paragraph-text-p-bold {
+            font-size: 20px;
+            font-weight: 500;
+            color: #202020;
+            font-family: "GeneralSans";
+        }
+
+        .download-btn .btn {
+            background: linear-gradient(90deg, #082dfe 0%, #8e64fd 76.92%);
+            color: #ffff;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            padding: 10px 30px;
+            font-family: "Figtree", sans-serif;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            border: 0;
+            box-shadow: none;
+        }
+
+        .banner-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 100px;
+            width: 100%;
+            background: linear-gradient(to bottom, transparent, white);
+            pointer-events: none;
+        }
+
+
+        .carousel-section {
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            padding: 40px 0px 30px;
+        }
+
+        .carousel-card {
+            background: #a0a3ff;
+            border-radius: 10px;
+            margin: 5px 0px;
+            padding: 20px 20px !important;
+            backdrop-filter: blur(13px);
+            border: 1px solid #00000029;
+            text-align: left;
+        }
+
+        .carousel-card .yellow-stars {
+            width: 104px;
+            height: 17px;
+        }
+
+        .carousel-card h4 {
+            font-family: "GeneralSans";
+            font-weight: 500;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .carousel-card p {
+            font-family: "GeneralSans";
+            font-weight: 500;
+            font-size: 16px;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-circle img {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+
+        .owl-nav {
+            display: none !important;
+        }
+
+        .owl-dots {
+            display: none !important;
+        }
+
+        .technology-section {
+            padding: 50px 0px 50px;
+        }
+
+        .technology-section .techno-ai-card {
+            background-color: #f1f1f1;
+            border: 0;
+            border-radius: 20px;
+            padding: 5px 20px;
+        }
+
+        .technology-section .techno-ai-card h6 {
+            font-weight: 600;
+            color: #202020;
+            font-family: "GeneralSans";
+            font-size: 18px;
+        }
+
+        .technology-section .techno-ai-card p {
+            font-weight: 400;
+            color: #202020;
+            font-size: 18px;
+        }
+
+        .map-key-markets {
+            padding: 40px 0px 40px;
+        }
+
+        .map-key-markets .map-key-markets-top-content p {
+            font-weight: 400;
+            color: #202020;
+            font-size: 15.5px;
+        }
+
+        .faq-section {
+            padding: 40px 0px 40px;
+        }
+
+        .faq-section ul.disc {
+            list-style-type: disc !important;
+        }
+
+        .faq-section .accordion-button {
+            background-color: #f1f1f1;
+            margin-bottom: 20px;
+            border-radius: 19px !important;
+            padding: 25px 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #202020;
+            font-family: "GeneralSans";
+        }
+
+        .accordion-item {
+            border: 0;
+        }
+
+        .accordion-body p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #202020;
+            font-family: "GeneralSans";
+        }
+
+        /*  */
+        #carousel2 .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #carousel2 .owl-stage {
+            display: flex !important;
+        }
+
+        #carousel2 .owl-item {
+            display: flex;
+            height: auto !important;
+        }
+
+        #carousel2 .carousel-card {
+            flex: 1;
+        }
+
+        #carousel1 .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #carousel1 .owl-stage {
+            display: flex !important;
+        }
+
+        #carousel1 .owl-item {
+            display: flex;
+            height: auto !important;
+        }
+
+        #carousel1 .carousel-card {
+            flex: 1;
+        }
+
+        .grow-group-section {
+            padding: 30px 0px 30px;
+            position: relative;
+        }
+
+
+    </style>
+
+    <style>
+        @media only screen and (max-width: 767px) {
+            h3 {
+                font-size: 30px;
+            }
+
+            .mt-100 {
+                margin-top: 80px;
+            }
+
+            .navbar {
+                padding: 10px 0px;
+            }
+
+            .logo {
+                width: 145px;
+            }
+
+            .navbar .navbar-nav a {
+                font-size: 14px;
+            }
+
+            /*  */
+            .trust-badge {
+                gap: 3px;
+                margin-bottom: 15px;
+            }
+
+            .trust-badge .trusted-text {
+                font-size: 14px;
+            }
+
+            .trust-avatars img {
+                width: 24px;
+                margin-left: -13px;
+            }
+
+            .banner-section h1 {
+                font-size: 40px;
+            }
+
+            .paragraph-text-p-bold {
+                font-size: 16px;
+            }
+
+            .download-btn .btn {
+                margin-bottom: 25px;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            .banner-section::after {
+                height: 70px;
+            }
+
+            .proven-result-section {
+                padding: 20px 0px 60px;
+                text-align: center;
+            }
+
+            .proven-right h2 {
+                font-size: 40px;
+            }
+
+            .feature-section .feature-content-body .benifits-btn {
+                border-radius: 6px;
+                font-size: 14px;
+            }
+
+            .crossx-right {
+                position: absolute;
+                right: 0;
+                top: -70px;
+                bottom: 0;
+                z-index: -1;
+            }
+
+            .crossx-right img {
+                max-width: 620px;
+                width: 100%;
+            }
+
+            .crossx-left-svg-wrapper {
+                position: relative;
+                z-index: 2;
+            }
+
+            .crossx-left {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                z-index: -1;
+            }
+
+            .crossx-left img {
+                max-width: 620px;
+                width: 100%;
+            }
+
+            /*  */
+
+            .Earn-work-section {
+                padding: 20px 0px 30px;
+            }
+
+            /*  */
+            .earn-work-card-container .earn-left-card-box {
+                margin-bottom: 18px;
+                padding: 20px;
+            }
+
+            .earn-left-card-box .card-heading {
+                font-size: 16px;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+
+            .earn-left-card-box .card-description {
+                font-size: 14px;
+            }
+
+            .illustration-container::after {
+                right: -30%;
+                top: 0;
+            }
+
+            .illustration-container .illustration img {
+                object-fit: contain;
+            }
+
+            .illustration-container .illustration {
+                display: none;
+            }
+
+            .illustration-container .active {
+                display: block;
+            }
+
+            .earn-apart-section {
+                padding: 10px 0px 10px;
+            }
+
+            .earn-apart-section .apart-card-box {
+                padding: 16px;
+            }
+
+            .earn-apart-section .apart-card-box .apart-heading {
+                font-weight: 500;
+                font-size: 16px;
+            }
+
+            .earn-apart-section .apart-card-box .apart-info {
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            .cross-platform-bg-blue-section {
+                padding: 20px 0px 10px;
+            }
+
+            .cross-platform-bg-blue-section::after {
+                height: 130px;
+                width: 100%;
+            }
+
+            .cross-platform-top-content h5 {
+                font-size: 28px;
+            }
+
+            .cross-platform-top-content p {
+                font-weight: 500;
+                font-size: 18px;
+            }
+
+            .carousel-section {
+                padding: 20px 0px 20px;
+            }
+
+
+            .technology-section {
+                padding: 2px 0px 10px;
+            }
+
+            .map-key-markets {
+                padding: 10px 0px 20px;
+            }
+
+            .grow-group-body-content {
+                width: 100%;
+            }
+
+            .faq-section {
+                padding: 20px 0px 20px;
+            }
+
+            .faq-section .accordion-button {
+                margin-bottom: 15px;
+                border-radius: 10px !important;
+                padding: 20px 15px;
+                font-size: 15px;
+                box-shadow: none;
+            }
+
+            .accordion-item {
+                border: 0;
+            }
+
+            .grow-group-section h3 {
+                font-size: 26px;
+            }
+
+            .grow-group-section {
+                padding: 100px 0px 120px;
+                overflow: hidden;
+            }
+
+            .grow-circle-group-img {
+                display: none;
+            }
+
+            .testimonial-circle {
+                display: none;
+            }
+
+            .terms-and-condition-section h4 {
+                color: #202020;
+                font-size: 26px;
+            }
+
+            .terms-and-condition-section p,
+            li,
+            ol {
+                margin: 6px 0px;
+            }
+
+            .footer-section .footer-top {
+                background: #ffffff;
+                border-radius: 48px 48px 0px 0px;
+                padding: 23px 20px;
+                box-shadow: 0px 7px 20.5px 0px #907ffe85;
+            }
+
+            .terms-and-condition-section::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 400px;
+                /* or your image width */
+                height: 100%;
+                /* or your image height */
+                background: url(../image/termsofuseX.png) no-repeat left bottom;
+                background-size: contain;
+                z-index: -1;
+            }
+
+            .footer-top-menu ul li {
+                margin: 7px 0px;
+            }
+
+            .footer-top-menu h6 {
+                margin: 0 0 8px 0;
+            }
+
+            .text-follow {
+                font-weight: 600 !important;
+                font-family: "Instrument Sans", sans-serif;
+            }
+        }
+
+
+
+        @media only screen and (min-width: 767px) and (max-width: 992px) {
+            .banner-section h1 {
+                font-size: 40px;
+            }
+
+            .proven-right h2 {
+                font-size: 39px;
+            }
+
+            h3 {
+                font-size: 29px;
+            }
+
+            .proven-right p {
+                font-size: 14px;
+            }
+
+            .feature-section .feature-content-body p {
+                font-size: 16px;
+            }
+
+            .earn-work-card-container .earn-left-card-box {
+                padding: 11px;
+            }
+
+            .paragraph-text-p-bold {
+                font-size: 18px;
+            }
+
+            .technology-section .techno-ai-card {
+                padding: 5px 10px;
+            }
+
+            .technology-section .techno-ai-card h6 {
+                font-weight: 500;
+                font-size: 16px;
+            }
+
+            .Earn-work-section {
+                padding: 20px 0px 20px;
+            }
+
+            .earn-apart-section {
+                padding: 20px 0px 20px;
+            }
+
+            .proven-result-section {
+                padding: 24px 0px 61px;
+            }
+
+            .technology-section {
+                padding: 15px 0px 7px;
+            }
+
+            .map-key-markets {
+                padding: 6px 0px 6px;
+            }
+
+            .cross-platform-bg-blue-section {
+                padding: 14px 0px 16px;
+            }
+
+            .footer-section .footer-top {
+                padding: 22px 41px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==== Navbar Section Start ==== -->
+    <header>
+        <nav class="navbar navbar-expand-md fixed-top" id="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./assets/image/logowhite.svg" alt="logo" class="img-fluid logo" loading="lazy"
+                        id="logo-img">
+                </a>
+                <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <div class="custom-toggler" id="nav-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link fw-500 fs-16 active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-500 fs-16" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-500 fs-16" href="#resources">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-500 fs-16" href="#reviews">Reviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-500 fs-16" href="#contact">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- ==== Navbar Section End ==== -->
+
+
+    <!-- ==== Banner Section Start ==== -->
+    <section class="banner-section mt-100" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="trust-badge d-flex justify-content-center align-items-center">
+                        <div class="trust-avatars">
+                            <img src="./assets/image/avtar1.png" class="avtar img-fluid" alt="avtar1" loading="lazy">
+                            <img src="./assets/image/avtar2.png" class="avtar img-fluid" alt="avtar2" loading="lazy">
+                            <img src="./assets/image/avtar3.png" class="avtar img-fluid" alt="avtar3" loading="lazy">
+                        </div>
+                        <span class="trusted-text">Trusted by 5,00,000+ people</span>
+                    </div>
+                    <h1 class="fw-600">Cutting-edge user acquisition <span class="d-md-block">platform powered by
+                            AI</span></h1>
+                    <p class="paragraph-text-p-bold mb-3 mb-md-4">Designed to help gaming apps and mobile apps scale
+                        efficiently <span class="d-md-block">by
+                            acquiring high-quality,
+                            engaged users.</span></p>
+                    <div class="download-btn  d-flex justify-content-center align-items-baseline">
+                        <a href="https://play.google.com/store/apps/details?id=com.playwall.earnapp" target="_blank"
+                            class="btn">Download The App <i class="fas fa-chevron-right fs-13 ps-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row creative-bg-color justify-content-center">
+            <div class="col-md-4">
+                <div>
+                    <img src="./assets/image/bannercreative.png" class="img-fluid" alt="bannercreative">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- ==== Carousel-Section-Start ==== -->
+    <section class="carousel-section mt-1 mt-md-5 mb-2 mb-md-5" id="reviews">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 customers-reviews-top-content text-center mb-4">
+                    <div>
+                        <h3>Trusted by 500,000+ customers</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- First Row Carousel -->
+            <div class="carousel-row">
+                <div class="owl-carousel owl-theme" id="carousel1">
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>EarnX.ai simplifies monetization by offering tailored rewards that align with user
+                            preferences, increasing engagement without being disruptive.</p>
+                        <h6>Isabella Rivera</h6>
+                    </div>
+                    <div class="card  card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>The instant withdrawal feature is a game changer. Earnings can be accessed at any time, and
+                            the system processes payments without any delay.</p>
+                        <h6>Olivia Bennett</h6>
+                    </div>
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>EarnX.ai’s streamlined sign-up makes it easy for users to start earning without delays.</p>
+                        <h6>Ethan Rodriguez</h6>
+                    </div>
+                    <div class="card  card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>Regularly updated offers and features keep the platform fresh and encourage ongoing
+                            participation.</p>
+                        <h6>Sophia Hayes</h6>
+                    </div>
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>An excellent platform for extra income. This app has proven to be a reliable and rewarding
+                            earning platform.</p>
+                        <h6>Liam Turner</h6>
+                    </div>
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>The daily tasks are simple and quick, yet rewarding enough to make logging in every day
+                            worthwhile.</p>
+                        <h6>Ava Collins</h6>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Second Row Carousel -->
+            <div class="carousel-row">
+                <div class="owl-carousel owl-theme" id="carousel2">
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>EarnX.ai shows a clear focus on security and user experience, with robust measures to protect
+                            both personal and financial data.</p>
+                        <h6>Noah Peterson</h6>
+                    </div>
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>The platform is exceptionally user-friendly, making it easy to navigate and track earning
+                            progress.</p>
+                        <h6>Harper Mitchell</h6>
+                    </div>
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>A visually clean interface combined with responsive performance delivers a smooth earning
+                            experience from start to finish.</p>
+                        <h6>Lucas Foster</h6>
+                    </div>
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>The platform’s reward-driven approach keeps users active and interested, resulting in higher
+                            in-app interactions and increased loyalty.</p>
+                        <h6>Mason Brooks</h6>
+                    </div>
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>The balance between advertiser needs and user satisfaction is outstanding. The platform truly
+                            benefits all parties involved.</p>
+                        <h6>Charlotte Price</h6>
+                    </div>
+                    <div class="card card-item carousel-card">
+                        <div class="me-auto mb-3 mb-md-4">
+                            <img src="./assets/image/yellowstars.svg" alt="yellowstars" class="img-fluid yellow-stars"
+                                loading="lazy">
+                        </div>
+                        <p>The daily tasks are quick and simple, yet the rewards add up over time. It’s a great balance
+                            of effort and benefit.</p>
+                        <h6>William Scott</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-circle">
+            <img class="img-fluid" src="./assets/image/testimonialpattern.png" alt="testimonialpattern">
+        </div>
+    </section>
+    <!-- ==== Carousel-Section-End ==== -->
+
+
+
+
+
+
+    <!-- ==== Faq-Section-Start  ==== -->
+    <section class="faq-section mb-2 mb-md-4">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-12 text-center map-top-head">
+                    <h3 class="mb-3 md-mb-5">Frequently Asked Questions</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mx-auto">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    How does your reward system work?
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Users earn rewards for meaningful in-app behavior—like time
+                                        spent, reaching levels, or completing tutorials.
+                                        AI ensures the reward curve stays motivating without overspending, retaining
+                                        users
+                                        longer and maximizing value per install.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo">
+                                    What’s the pricing model?
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <ul class="disc ">
+                                        <li>
+                                            <p>
+                                                CPE (Cost Per Engagement) by default
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Also supports CPI, CPA, or hybrid KPIs based on your goals
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Our AI-powered pricing engine adjusts bids to drive optimal value at
+                                                lowest
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseThree">
+                                    What kind of advertisers or apps are best suited for EarnX
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <ul class="disc">
+                                        <li>
+                                            <p>
+                                                Mobile games (hyper-casual, mid-core, casual)
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Fintech, rewards, and utility apps
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Subscription and freemium services
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <p>Ideal for apps where time-spent = revenue, and retention matters more than just
+                                        installs.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                    aria-controls="flush-collapseFour">
+                                    How is EarnX different from most other platforms in the market
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        While others focus on standard install or playtime campaigns, EarnX leverages AI
+                                        to drive smarter engagement and better results:
+                                    </p>
+                                    <ul class="disc">
+                                        <li>
+                                            <p>
+                                                AI-powered Reward Optimization: We adjust rewards in real-time based
+                                                on user behavior, ensuring deeper app engagement.
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Predictive Engagement Modeling: Our AI predicts which users are most
+                                                likely to complete valuable in-app actions (like purchases or level
+                                                completions) and prioritizes delivery to them. </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Smart Budget Allocation: Machine learning dynamically reallocates
+                                                spend across geos, devices, and time slots for best ROI. </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Smart Budget Allocation: Machine learning dynamically reallocates
+                                                spend across geos, devices, and time slots for best ROI. </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Custom KPI Alignment: Set your own performance metrics—our AI learns
+                                                and adapts campaigns around them.</p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Minimal Waste, Maximum Outcome: Every dollar is optimized towards
+                                                users with the highest probability of retention and conversion.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                    aria-controls="flush-collapseFive">
+                                    How does tracking and reporting work
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <ul class="disc ">
+                                        <li>
+                                            <p>
+                                                Fully integrated with MMPs like Appsflyer, Adjust, Branch, and
+                                                Singular
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Real-time dashboard with insights into: </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Installs, retention, time-spent </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                ROAS, custom events, user quality</p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                AI suggestions to optimize KPIs</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSix" aria-expanded="false"
+                                    aria-controls="flush-collapseSix">
+                                    Which geos does EarnX perform best in
+                                </button>
+                            </h2>
+                            <div id="flush-collapseSix" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        We deliver strong results in both Tier 1 (US, UK, Germany, Canada, AU) and
+                                        emerging markets (India, SEA, LATAM, MENA).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==== Faq-Section-End  ==== -->
+
+
+
+
+
+
+    <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#carousel1").owlCarousel({
+                items: 4,
+                loop: true,
+                margin: 5,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplaySpeed: 3000,
+                smartSpeed: 3000,
+                slideTransition: 'linear',// continuous effect
+                autoplayHoverPause: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 4
+                    }
+                }
+            });
+
+            $("#carousel2").owlCarousel({
+                items: 4,
+                loop: true,
+                margin: 5,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplaySpeed: 3000,
+                smartSpeed: 3000,
+                slideTransition: 'linear',
+                autoplayHoverPause: false,
+                rtl: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 4
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const customToggler = document.querySelector('.custom-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            navbarToggler.addEventListener('click', function () {
+                customToggler.classList.toggle('open');
+            });
+
+            navbarCollapse.addEventListener('hidden.bs.collapse', function () {
+                customToggler.classList.remove('open');
+            });
+        });
+    </script>
+
+
+    <script>
+        window.addEventListener("scroll", function () {
+            const navbar = document.getElementById("navbar");
+            const logoImg = document.getElementById("logo-img");
+
+            if (window.scrollY > 500) {
+                navbar.classList.add("scrolled");
+                logoImg.src = "./assets/image/logodark.svg"; // 👈 Change to black logo
+            } else {
+                navbar.classList.remove("scrolled");
+                logoImg.src = "./assets/image/logowhite.svg"; // 👈 Change back to white logo
+            }
+        });
+    </script>
+</body>
+
+</html>

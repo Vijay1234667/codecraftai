@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Video Section Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <style>
+       
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        
+        /* Custom navbar toggler */
+        .navbar-toggler {
+            border: none;
+            padding: 0.4rem 0.6rem;
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            display: none;
+        }
+
+        .custom-toggler {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            margin: auto;
+            transform: rotate(0deg);
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .custom-toggler span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #333;
+            border-radius: 1px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: 0.25s ease-in-out;
+        }
+
+        .custom-toggler span:nth-child(1) {
+            top: 2px;
+        }
+
+        .custom-toggler span:nth-child(2),
+        .custom-toggler span:nth-child(3) {
+            top: 9px;
+        }
+
+        .custom-toggler span:nth-child(4) {
+            top: 16px;
+        }
+
+        .custom-toggler.open span:nth-child(1) {
+            top: 9px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .custom-toggler.open span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        .custom-toggler.open span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .custom-toggler.open span:nth-child(4) {
+            top: 9px;
+            width: 0%;
+            left: 50%;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+
+            .navbar-collapse {
+                margin-top: 1rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 5px 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img class="img-fluid" src="./img/darklogo.svg" alt="logo"
+                        width="130px">
+            </a>
+
+            <!-- Mobile toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="custom-toggler" id="nav-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Handle navbar toggler animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const customToggler = document.querySelector('.custom-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+
+            navbarToggler.addEventListener('click', function () {
+                customToggler.classList.toggle('open');
+            });
+
+            // Handle when menu closes by clicking outside
+            navbarCollapse.addEventListener('hidden.bs.collapse', function () {
+                customToggler.classList.remove('open');
+            });
+
+            // Video play/pause functionality
+            const video = document.querySelector('.video-background');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const playPauseIcon = document.getElementById('playPauseIcon');
+
+            playPauseBtn.addEventListener('click', function () {
+                if (video.paused) {
+                    video.play();
+                    playPauseIcon.className = 'bi bi-pause-fill';
+                } else {
+                    video.pause();
+                    playPauseIcon.className = 'bi bi-play-fill';
+                }
+            });
+
+            // Handle video ended event
+            video.addEventListener('ended', function () {
+                playPauseIcon.className = 'bi bi-play-fill';
+            });
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

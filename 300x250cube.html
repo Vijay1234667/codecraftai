@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube Rotation Banner Ad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .ad-container {
+            width: 300px;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ad-cube {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-style: preserve-3d;
+            transition: transform 1s ease-in-out;
+            transform: rotateY(0deg);
+            transform-origin: center center;
+        }
+
+        /* Cube faces */
+        .cube-face {
+            position: absolute;
+            width: 300px;
+            height: 250px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+
+        .cube-face a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cube-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Position each face of the cube */
+        .face-front {
+            transform: translateZ(150px);
+        }
+
+        .face-right {
+            transform: rotateY(90deg) translateZ(150px);
+        }
+
+        .face-back {
+            transform: rotateY(180deg) translateZ(150px);
+        }
+
+        .face-left {
+            transform: rotateY(-90deg) translateZ(150px);
+        }
+    </style>
+</head>
+<body>
+    <div class="ad-container">
+        <div class="ad-cube" id="adCube">
+            
+            <!-- Creative 1 - Zepto -->
+            <div class="cube-face face-front">
+                <a href="https://example.com/zepto" target="_blank">
+                    <img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=300&h=250&fit=crop" alt="Creative 1">
+                </a>
+            </div>
+            
+            <!-- Creative 2 - Swiggy -->
+            <div class="cube-face face-right">
+                <a href="https://example.com/swiggy" target="_blank">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=250&fit=crop" alt="Creative 2">
+                </a>
+            </div>
+            
+            <!-- Creative 3 - Blinkit -->
+            <div class="cube-face face-back">
+                <a href="https://example.com/blinkit" target="_blank">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&h=250&fit=crop" alt="Creative 3">
+                </a>
+            </div>
+            
+            <!-- Creative 4 - PhonePe -->
+            <div class="cube-face face-left">
+                <a href="https://example.com/phonepe" target="_blank">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&h=250&fit=crop" alt="Creative 4">
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const adCube = document.getElementById('adCube');
+        const ROTATION_INTERVAL = 3000; 
+        let rotationDegree = 0;
+
+        function rotateCube() {
+            rotationDegree -= 90;
+            adCube.style.transform = `rotateY(${rotationDegree}deg)`;
+        }
+
+        setInterval(rotateCube, ROTATION_INTERVAL);
+    </script>
+</body>
+</html>

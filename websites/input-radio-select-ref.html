@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Ad Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #18191a;
+            color: #e4e6eb;
+        }
+
+        .card {
+            background-color: #242526;
+            border: 1px solid #3a3b3c;
+            border-radius: 8px;
+            color: #e4e6eb;
+        }
+
+        .cmpaign-details-body {
+            padding: 20px;
+        }
+
+        .form-control {
+            background-color: #3a3b3c;
+            border-color: #3a3b3c;
+            color: #e4e6eb;
+        }
+
+        .form-control:focus {
+            background-color: #3a3b3c;
+            border-color: #0866ff;
+            color: #e4e6eb;
+            box-shadow: 0 0 0 0.2rem rgba(8, 102, 255, 0.25);
+        }
+
+        .form-control::placeholder {
+            color: #8a8d91;
+        }
+
+        .text-white {
+            color: #e4e6eb !important;
+        }
+
+        .border-secondary-muted {
+            border-color: #3a3b3c !important;
+        }
+
+        .color-green {
+            color: #31a24c;
+        }
+
+        .color-blue {
+            color: #0866ff;
+        }
+
+        .font-14 {
+            font-size: 14px;
+        }
+
+        .font-18 {
+            font-size: 18px;
+        }
+
+        .fw-500 {
+            font-weight: 500;
+        }
+
+        .form-check-input {
+            background-color: #3a3b3c;
+            border-color: #3a3b3c;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: #0866ff;
+            border-color: #0866ff;
+        }
+
+        .form-check-input:focus {
+            border-color: #0866ff;
+            box-shadow: 0 0 0 0.2rem rgba(8, 102, 255, 0.25);
+        }
+
+        .form-check-label {
+            color: #e4e6eb;
+            cursor: pointer;
+        }
+
+        .form-select {
+            background-color: #3a3b3c;
+            border-color: #3a3b3c;
+            color: #e4e6eb;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e4e6eb' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        }
+
+        .form-select:focus {
+            background-color: #3a3b3c;
+            border-color: #0866ff;
+            color: #e4e6eb;
+            box-shadow: 0 0 0 0.2rem rgba(8, 102, 255, 0.25);
+        }
+
+        .text-muted-custom {
+            color: #8a8d91;
+            font-size: 13px;
+        }
+
+        .info-icon {
+            color: #8a8d91;
+            cursor: help;
+        }
+
+        .collapsible-section {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #2c2d2e;
+            border-radius: 6px;
+            border: 1px solid #3a3b3c;
+        }
+
+        .collapsible-section.show {
+            display: block;
+        }
+
+        .toggle-arrow {
+            transition: transform 0.2s;
+            color: #8a8d91;
+        }
+
+        .toggle-arrow.rotated {
+            transform: rotate(90deg);
+        }
+
+        hr {
+            border-color: #3a3b3c;
+            opacity: 1;
+        }
+
+        .btn-link {
+            color: #0866ff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-link:hover {
+            color: #0866ff;
+            text-decoration: underline;
+        }
+
+        .section-header {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .section-header:hover {
+            background-color: #2c2d2e;
+            border-radius: 4px;
+            padding: 5px;
+            margin: -5px;
+        }
+    </style>
+
+
+    <style>
+        .dropdown-with-radio-selection .active-option {
+            padding: 10px;
+        }
+
+        .dropdown-with-radio-selection .dropdown-menu li.active-option {
+            background-color: #e7f1ff;
+            border-radius: 6px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <!-- Add set name -->
+                <div class="card cmpaign-details-body mb-3">
+                    <div class="mb-0">
+                        <label for="adSetName" class="form-label font-18 fw-500 text-white">
+                            <i class="fa-solid fa-rectangle-ad me-2 color-blue"></i>Add set name
+                        </label>
+                        <input type="text" class="form-control text-white border-secondary-muted font-14 py-2"
+                            id="adSetName" placeholder="Ad set name">
+                    </div>
+                </div>
+
+                <!-- Conversion -->
+                <div class="card cmpaign-details-body mb-3">
+                    <div class="mb-3">
+                        <label class="form-label font-18 fw-500 text-white">
+                            <i class="fa-solid fa-bullseye me-2 color-blue"></i>Conversion
+                        </label>
+                        <p class="text-muted-custom mb-2">
+                            Choose the location where you'd like to drive traffic.
+                        </p>
+                        <select class="form-select text-white border-secondary-muted font-14 py-2">
+                            <option selected>Website</option>
+                            <option>App</option>
+                            <option>Messenger</option>
+                            <option>WhatsApp</option>
+                        </select>
+                    </div>
+
+
+
+                </div>
+
+
+                <!-- Placements -->
+                <div class="card cmpaign-details-body mb-3">
+                    <div class="mb-3">
+                        <label class="form-label font-18 fw-500 text-white">
+                            <i class="fa-solid fa-mobile-screen-button me-2 color-blue"></i>Placements
+                        </label>
+                        <p class="text-muted-custom">
+                            We'll automatically show ads on the places where they're likely to perform best.
+                            <a href="#" class="btn-link">About placements</a>
+                        </p>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="placementType" id="autoPlacement" checked>
+                        <label class="form-check-label" for="autoPlacement">
+                            Automatic placements (Recommended)
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="placementType" id="manualPlacement">
+                        <label class="form-check-label" for="manualPlacement">
+                            Manual placements
+                        </label>
+                    </div>
+
+                    <hr>
+
+                    <!-- Facebook video feeds -->
+                    <div class="mb-3">
+                        <div class="section-header d-flex justify-content-between align-items-center"
+                            onclick="toggleSection('facebookVideoFeeds')">
+                            <div>
+                                <i class="fa-solid fa-chevron-right toggle-arrow me-2" id="facebookVideoFeedsArrow"></i>
+                                <span class="fw-500">Facebook video feeds</span>
+                            </div>
+                        </div>
+                        <div id="facebookVideoFeeds" class="collapsible-section">
+                            <p class="text-muted-custom mb-3">
+                                Your Facebook video feed ads placement is your vertical video on Facebook mobile app
+                                feed.
+                            </p>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="fbVideoFeed1">
+                                <label class="form-check-label" for="fbVideoFeed1">
+                                    Facebook video feed
+                                </label>
+                            </div>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="fbVideoFeed2">
+                                <label class="form-check-label" for="fbVideoFeed2">
+                                    Facebook reels
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+
+
+
+                    <!-- Apps and sites -->
+                    <div class="mb-0">
+                        <div class="section-header d-flex justify-content-between align-items-center"
+                            onclick="toggleSection('appsSection')">
+                            <div>
+                                <i class="fa-solid fa-chevron-right toggle-arrow me-2" id="appsSectionArrow"></i>
+                                <span class="fw-500">Apps and sites</span>
+                            </div>
+                        </div>
+                        <div id="appsSection" class="collapsible-section">
+                            <p class="text-muted-custom mb-3">
+                                Your Audience Network ads appear in external apps and sites.
+                            </p>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="appsBanner">
+                                <label class="form-check-label" for="appsBanner">
+                                    Audience Network banner
+                                </label>
+                            </div>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="appsInterstitial">
+                                <label class="form-check-label" for="appsInterstitial">
+                                    Audience Network interstitial
+                                </label>
+                            </div>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="appsNative">
+                                <label class="form-check-label" for="appsNative">
+                                    Audience Network native
+                                </label>
+                            </div>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="appsRewarded">
+                                <label class="form-check-label" for="appsRewarded">
+                                    Audience Network rewarded video
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Cost control -->
+                <div class="card cmpaign-details-body mb-3">
+                    <div class="mb-3">
+                        <label class="form-label font-18 fw-500 text-white">
+                            <i class="fa-solid fa-dollar-sign me-2 color-blue"></i>Cost control
+                        </label>
+                        <p class="text-muted-custom">
+                            Control costs by setting a maximum or target amount you want to spend to achieve your
+                            desired result.
+                        </p>
+                    </div>
+
+                    <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" id="costControl">
+                        <label class="form-check-label" for="costControl">
+                            Set a cost control
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Skippable -->
+                <div class="card cmpaign-details-body mb-3">
+                    <div class="mb-0">
+                        <label class="form-label font-18 fw-500 text-white">
+                            <i class="fa-solid fa-forward me-2 color-blue"></i>Skippable <i
+                                class="fa-solid fa-circle-info info-icon ms-1"></i>
+                        </label>
+                        <p class="text-muted-custom mb-3">
+                            When turned on, we'll show skippable ads to people when available in the placement.
+                        </p>
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="skippableSwitch" checked>
+                            <label class="form-check-label" for="skippableSwitch">
+                                Enable skippable ads
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="card cmpaign-details-body mb-3">
+                    <div class="dropdown">
+                        <button
+                            class="btn btn-light w-100 border d-flex justify-content-between align-items-center btn-dropdown dropdown-toggle"
+                            type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="selectedOption">Standard</span>
+                        </button>
+
+                        <ul class="dropdown-menu px-2 mt-2 bg-black" aria-labelledby="dropdownMenuButton">
+                            <li class="active-option mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input " type="radio" name="attribution" id="standard"
+                                        value="Standard">
+                                    <label class="form-check-label" for="standard">
+                                        <strong>Standard</strong>
+                                        <p class="text-muted-custom mb-3">Optimize ad delivery for a selected time
+                                            window and engagement type based
+                                            on
+                                            your attribution settings.
+                                            <a href="#" class="text-decoration-none">About attribution</a>
+                                        </p>
+                                    </label>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="attribution" id="incremental"
+                                        value="Incremental">
+                                    <label class="form-check-label" for="incremental">
+                                        <strong>Incremental</strong>
+                                        <p class="text-muted-custom mb-3">Optimize delivery for incremental conversions
+                                            using models that predict
+                                            whether a conversion is caused by an ad.
+                                            <a href="#" class="text-decoration-none">About incremental attribution</a>
+                                        </p>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const arrow = document.getElementById(sectionId + 'Arrow');
+
+            if (section.classList.contains('show')) {
+                section.classList.remove('show');
+                arrow.classList.remove('rotated');
+            } else {
+                section.classList.add('show');
+                arrow.classList.add('rotated');
+            }
+        }
+    </script>
+
+
+    <script>
+        const radios = document.querySelectorAll('input[name="attribution"]');
+        const selectedOption = document.getElementById('selectedOption');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', e => {
+                selectedOption.textContent = e.target.value;
+                document.querySelectorAll('.dropdown-menu li').forEach(li => {
+                    li.classList.remove('active-option');
+                });
+                const li = e.target.closest('li');
+                li.classList.add('active-option');
+            });
+        });
+    </script>
+</body>
+
+</html>

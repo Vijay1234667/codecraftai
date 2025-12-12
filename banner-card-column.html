@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdMetrics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a,
+        li {
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        [type="reset"],
+        [type="submit"],
+        button,
+        html [type="button"] {
+            outline: none;
+        }
+
+        button {
+            border: none;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            overflow: hidden;
+            overflow-y: auto;
+            background-color: var(--primary-bg-black);
+            color: #fff;
+            transition: opacity 0.5s 0.3s ease-in-out;
+        }
+
+        :root {
+            --primary-green: #10b77f;
+            --primary-lightgray: #83879036;
+            --primary-darkgray: #99a0ab;
+            --primary-bg-black: #131313;
+        }
+
+        .text-paragraph-sm {
+            color: var(--primary-darkgray);
+            font-size: 14px;
+        }
+
+        .text-paragraph-md {
+            color: var(--primary-darkgray);
+            font-size: 15px;
+        }
+
+        .text-paragraph-lg {
+            color: var(--primary-darkgray);
+            font-size: 18px;
+        }
+
+        .text-paragraph-xl {
+            color: var(--primary-darkgray);
+            font-size: 18px;
+        }
+
+
+        .hover-btn-green:hover {
+            background-color: var(--primary-green);
+            color: #fff;
+        }
+
+        .bg-green {
+            background-color: var(--primary-green);
+        }
+
+        .color-green {
+            color: var(--primary-green);
+        }
+
+        .bg-theme-dark {
+            background-color: var(--primary-bg-black);
+        }
+
+        .border-btm-secondary {
+            border-bottom: 1px solid var(--primary-lightgray);
+        }
+
+        .border-muted-secondary {
+            border: 1px solid var(--primary-lightgray);
+        }
+
+        .bdr-13 {
+            border-radius: 13px;
+        }
+
+        .bdr-5 {
+            border-radius: 5px;
+        }
+
+
+        /* custom classes */
+        .font-10 {
+            font-size: 10px;
+        }
+
+        .font-11 {
+            font-size: 11px;
+        }
+
+        .font-12 {
+            font-size: 12px;
+        }
+
+        .font-13 {
+            font-size: 13px;
+        }
+
+        .font-14 {
+            font-size: 14px;
+        }
+
+        .font-15 {
+            font-size: 15px;
+        }
+
+        .font-16 {
+            font-size: 16px;
+        }
+
+        .font-20 {
+            font-size: 20px;
+        }
+
+        .font-18 {
+            font-size: 18px;
+        }
+
+        .fw-400 {
+            font-weight: 400;
+        }
+
+        .fw-500 {
+            font-weight: 500;
+        }
+
+        .fw-600 {
+            font-weight: 600;
+        }
+
+        .fw-700 {
+            font-weight: 700;
+        }
+
+        .mt-70 {
+            margin-top: 70px;
+        }
+
+        h1 {
+            font-size: 63px;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 50px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 38px;
+            font-weight: 600;
+        }
+
+        .ltr7 {
+            letter-spacing: 0.7px;
+        }
+
+        .text-orange {
+            color: #f98255;
+        }
+
+        .text-purple {
+            color: #dc7ad6;
+        }
+
+        .hover-shadow-translate-y-btn:hover {
+            box-shadow: 0px 0px 10px #10b77f;
+            transition: 0.2s ease-in-out;
+            transform: translateY(-2px);
+        }
+
+
+
+        /* Hero-Section */
+        .hero-section {
+            padding: 70px 0px 30px;
+            min-height: 100vh;
+            width: 100%;
+            background-color: var(--primary-bg-black);
+        }
+
+        .hero-body-content .btn {
+            padding: 10px 30px;
+        }
+
+        .hero-body-content .meta-btn {
+            padding: 7px 20px;
+            border: 1px solid var(--primary-lightgray);
+            background-color: #161616;
+        }
+
+        .stats-section {
+            padding: 30px 0px 30px;
+            background: linear-gradient(90deg, #121313, #121917, #111514);
+            border-top: 1px solid var(--primary-lightgray);
+            border-bottom: 1px solid var(--primary-lightgray);
+
+        }
+
+        .stats-section .card {
+            padding: 30px 0px 30px;
+
+        }
+
+        .stat-number {
+            font-size: 35px;
+            font-weight: 700;
+        }
+
+        .platforms-section {
+            padding: 60px 0px 60px;
+            text-align: center;
+            background: linear-gradient(90deg, #111514, #121313, #121917);
+        }
+
+
+        .platform-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .features-section {
+            padding: 60px 0px 50px;
+            background-color: var(--primary-bg-black);
+        }
+
+        .features-section .card {
+            border: 1px solid var(--primary-lightgray);
+            padding: 30px 18px;
+            border-radius: 20px;
+            background-color: #181818 !important;
+            box-shadow: 0px 0px 2px 2px #181818;
+        }
+
+        .features-section .feature-launch:hover {
+            border: 1px solid #4778b8 !important;
+            transition: 0.3s ease-in-out;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .features-section .feature-analyze:hover {
+            border: 1px solid #9f6ed0 !important;
+            transition: 0.3s ease-in-out;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .features-section .feature-scale:hover {
+            border: 1px solid #41c06f !important;
+            transition: 0.3s ease-in-out;
+            transform: translateY(-3px) scale(1.05);
+
+        }
+
+        .blue-cta {
+            background-color: #1b222e;
+            font-size: 13px;
+            padding: 4px 9px;
+            color: #4778b8;
+            border-radius: 23px;
+        }
+
+        .purple-cta {
+            background-color: #241c2c;
+            font-size: 13px;
+            padding: 4px 9px;
+            color: #9f6ed0;
+            border-radius: 23px;
+        }
+
+        .green-cta {
+            background-color: #17281e;
+            color: #41c06f;
+            font-size: 13px;
+            padding: 4px 9px;
+            border-radius: 23px;
+        }
+
+        .newslater-section {
+            padding: 30px 0px 30px;
+        }
+
+        .newslater-section .card {
+            background-color: #5b647023;
+            border-radius: 23px;
+            padding: 60px 30px;
+        }
+
+        .newslater-box .btn {
+            padding: 10px 30px;
+        }
+
+        footer {
+            padding: 20px 0px 20px;
+            text-align: center;
+            border-top: 1px solid var(--primary-lightgray);
+        }
+    </style>
+
+
+    <style>
+
+        .product-cards-section{
+            padding: 30px 0px 40px;
+        }
+        .product-cards-section .product-card {
+            background: #182133;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(185, 79, 185, 0.1);
+        }
+
+        .product-cards-section .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px rgba(185, 79, 185, 0.3);
+            border-color: rgba(185, 79, 185, 0.4);
+        }
+
+        .product-cards-section .product-card .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-cards-section .product-card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        .product-cards-section .product-card .card-content {
+            padding: 18px 10px 18px 10px;
+        }
+    </style>
+
+
+    <style>
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+                font-weight: 600;
+            }
+
+            h2 {
+                font-size: 34px;
+                font-weight: 600;
+            }
+
+            h3 {
+                font-size: 32px;
+            }
+
+            .text-paragraph-xl {
+                font-size: 15px;
+            }
+
+            .text-paragraph-lg {
+                font-size: 15px;
+            }
+
+            .text-paragraph-md {
+                font-size: 13px;
+            }
+
+            .navbar .navbar-nav .nav-link {
+                margin-left: 0px;
+            }
+
+            .hero-section {
+                padding: 30px 0px 30px;
+            }
+
+            .stats-section .card {
+                padding: 8px 0px 8px;
+            }
+
+            .stat-number {
+                font-size: 30px;
+            }
+
+            .platforms-section {
+                padding: 16px 0px 11px;
+            }
+
+            .features-section {
+                padding: 22px 0px 12px;
+                background-color: var(--primary-bg-black);
+            }
+
+            .features-section .card {
+                padding: 20px 12px;
+                border-radius: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <main role="main">
+        <!-- Hero Section -->
+        <section class="hero-section mt-70">
+            <div class="container">
+                <div class="row  d-flex align-items-center">
+                    <div class="col-md-12 col-lg-6 col-12 mb-4 mb-md-3">
+                        <div class="hero-body-content">
+                            <p class="text-paragraph-md fw-400 mb-2 text-uppercase ltr7">SMALL BUSINESSES</p>
+                            <h1 class="mb-3 mb-md-4">Grow Big <span class="d-md-block">With AdMetrics</span></h1>
+                            <p class="text-paragraph-xl mb-3 mb-md-4">Launch, analyze, optimize and scale your ads
+                                faster <span class="d-md-block">with game-changing
+                                    automation.</span></p>
+                            <div class="mb-3 mb-md-4">
+                                <a href="index.html"
+                                    class="btn hover-shadow-translate-y-btn text-white bg-green  bdr-5 font-14">Back</a>
+                                <a href="javascript:void(0)"
+                                    class="btn text-white font-14 bdr-5 border-muted-secondary  ms-3 hover-btn-green">Watch
+                                    demo</a>
+                            </div>
+                            <p class="text-paragraph-sm">Based on 1000+ reviews</p>
+                            <div>
+                                <a href="javascript:void(0)" class="btn meta-btn  text-white font-14">Meta Business
+                                    Partners</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-6 col-12 text-center">
+                        <div>
+                            <img class="img-fluid" src="./image/benifitrightimg.png" alt="benifitrightimg"
+                                loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-12 mb-3 mb-md-2 mb-lg-3">
+                        <div class="card bg-transparent text-center">
+                            <div class="card-body p-0">
+                                <div class="stat-box">
+                                    <div class="mb-md-3 mb-2">
+                                        <img class="img-fluid" src="./image/AIPoweredbg.svg" alt="" loading="lazy">
+                                    </div>
+                                    <h4 class="stat-number mb-1 text-info">2018</h4>
+                                    <p class="text-paragraph-sm">Year founded</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-3 mb-md-2 mb-lg-3">
+                        <div class="card bg-transparent text-center">
+                            <div class="card-body p-0">
+                                <div class="stat-box">
+                                    <div class="mb-md-3 mb-2">
+                                        <img class="img-fluid" src="./image/AIPoweredbg.svg" alt="" loading="lazy">
+                                    </div>
+                                    <h4 class="stat-number mb-1 text-purple">12,000+</h4>
+                                    <p class="text-paragraph-sm">Customers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-3 mb-md-2 mb-lg-3">
+                        <div class="card bg-transparent text-center">
+                            <div class="card-body p-0">
+                                <div class="stat-box">
+                                    <div class="mb-md-3 mb-2">
+                                        <img class="img-fluid" src="./image/AIPoweredbg.svg" alt="" loading="lazy">
+                                    </div>
+                                    <h4 class="stat-number mb-1 color-green">100M</h4>
+                                    <p class="text-paragraph-sm">Managed ad spend</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-3 mb-md-2 mb-lg-3">
+                        <div class="card bg-transparent text-center">
+                            <div class="card-body p-0">
+                                <div class="stat-box">
+                                    <div class="mb-md-3 mb-2">
+                                        <img class="img-fluid" src="./image/AIPoweredbg.svg" alt="" loading="lazy">
+                                    </div>
+                                    <h4 class="stat-number mb-1 text-orange">100,000+</h4>
+                                    <p class="text-paragraph-sm">Campaigns launched</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- product-cards-section -->
+        <section class="product-cards-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                        <a href="prismx-mob.html">
+                            <div class="product-card card h-100">
+                                <div class="card-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&h=400&fit=crop"
+                                        alt="Glenfiddich" class="card-image" loading="lazy">
+                                </div>
+                                <div class="card-content">
+                                    <h3 class="card-title font-18 fw-600 text-white">
+                                        GLENFIDDICH
+                                        <span class="card-tag font-14 text-pink">| slider</span>
+                                    </h3>
+                                    <p class="card-description text-paragraph-md">Slider to change multiple products,
+                                        videos, BG and CTA.</p>
+                                    <p class="card-platform text-paragraph-sm fst-italic mb-2">Desktop & Mobile</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                        <a href="prismx-mob.html">
+                            <div class="product-card card h-100">
+                                <div class="card-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop"
+                                        alt="Glenfiddich" class="card-image" loading="lazy">
+                                </div>
+                                <div class="card-content">
+                                    <h3 class="card-title font-18 fw-600 text-white">
+                                        GLENFIDDICH
+                                        <span class="card-tag font-14 text-pink">| slider</span>
+                                    </h3>
+                                    <p class="card-description text-paragraph-md">Slider to change multiple products,
+                                        videos, BG and CTA.</p>
+                                    <p class="card-platform text-paragraph-sm fst-italic mb-2">Desktop & Mobile</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                        <a href="prismx-mob.html">
+                            <div class="product-card card h-100">
+                                <div class="card-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&h=400&fit=crop"
+                                        alt="Glenfiddich" class="card-image" loading="lazy">
+                                </div>
+                                <div class="card-content">
+                                    <h3 class="card-title font-18 fw-600 text-white">
+                                        GLENFIDDICH
+                                        <span class="card-tag font-14 text-pink">| slider</span>
+                                    </h3>
+                                    <p class="card-description text-paragraph-md">Slider to change multiple products,
+                                        videos, BG and CTA.</p>
+                                    <p class="card-platform text-paragraph-sm fst-italic mb-2">Desktop & Mobile</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                        <a href="prismx-mob.html">
+                            <div class="product-card card h-100">
+                                <div class="card-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&h=400&fit=crop"
+                                        alt="Glenfiddich" class="card-image" loading="lazy">
+                                </div>
+                                <div class="card-content">
+                                    <h3 class="card-title font-18 fw-600 text-white">
+                                        GLENFIDDICH
+                                        <span class="card-tag font-14 text-pink">| slider</span>
+                                    </h3>
+                                    <p class="card-description text-paragraph-md">Slider to change multiple products,
+                                        videos, BG and CTA.</p>
+                                    <p class="card-platform text-paragraph-sm fst-italic mb-2">Desktop & Mobile</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 mb-4 mb-md-4">
+                                <div class="card feature-launch h-100">
+                                    <div class="card-body p-0">
+                                        <div class="feature-card">
+                                            <div class="mb-3">
+                                                <img src="./image/AIPoweredbg.svg" alt="" loading="lazy">
+                                            </div>
+                                            <h5 class="feature-title">Launch</h5>
+                                            <p class="text-paragraph-md">Create and launch campaigns across multiple
+                                                platforms in minutes
+                                            </p>
+                                            <div>
+                                                <a class="purple-cta">Quick Setup</a>
+                                                <a class="ms-2 purple-cta">Templates</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-4 mb-md-4">
+                                <div class="card h-100 feature-analyze">
+                                    <div class="card-body p-0">
+                                        <div class="feature-card">
+                                            <div class="mb-3">
+                                                <img src="./image/AIPoweredbg.svg" alt="" loading="lazy">
+                                            </div>
+                                            <h5 class="feature-title">Analyze</h5>
+                                            <p class="text-paragraph-md">Get real-time insights and performance metrics
+                                                that matter
+                                            </p>
+                                            <div>
+                                                <a class="blue-cta">Live Data</a>
+                                                <a class="ms-2 blue-cta">AI Insights</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-4  mb-4 mb-md-4">
+                                <div class="card feature-scale h-100">
+                                    <div class="card-body p-0">
+                                        <div class="feature-card">
+                                            <div class="mb-3">
+                                                <img src="./image/AIPoweredbg.svg" alt="" loading="lazy">
+                                            </div>
+                                            <h5 class="feature-title">Scale</h5>
+                                            <p class="text-paragraph-md">Automate optimization and scale winning
+                                                campaigns effortlessly
+                                            </p>
+                                            <div>
+                                                <a class="green-cta">Auto-pilot</a>
+                                                <a class="ms-2 green-cta">Smart Rules</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script src="./js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

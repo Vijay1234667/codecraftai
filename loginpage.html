@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation-Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.font-30{
+    font-size: 30px;
+}
+.ltr4{
+    letter-spacing: 0.4px;
+}
+
+
+
+.login-page-section  h1{
+  font-size: 28px;
+  color: #373F47;
+  font-weight: bold;
+
+}
+.login-page-section p{
+  color: #4F5B67;
+  font-size: 15.5px;
+  font-weight: 400;
+}
+.nav-sign-up-btn .btn {
+  background: rgba(236, 112, 12, 1);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+  padding: 6px 20px;
+}
+
+.mt-80{
+  margin-top: 80px;
+}
+
+.waving-hand{
+  width: 26px;
+  height: 26px;
+}
+
+.login-form-box input {
+border: 1px solid rgba(157, 157, 157, 1);
+  border-radius: 8px;
+  height: 50px;
+  outline: none;
+  padding: 0px 10px;
+}
+.login-form-box input::placeholder {
+color: #4F5B67;
+font-weight: 500;
+font-size: 16px;
+}
+.password-input-box{
+  position: relative;
+}
+.password-input-box-absolute{
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+.login-form-box .login-btn .btn {
+  background-color: #292731;
+  width: 100%;
+  padding: 10px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16.75px;
+  background-color: #EC700C; 
+}
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg border-bottom bg-white py-2">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><img class="img-fluid" src="img/logo.svg"
+                        alt="logo" loading="lazy" /></a>
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <div class="mb-md-0 nav-sign-up-btn d-flex align-items-baseline">
+                            <small class="text-gray-secondary">Don’t have an account?</small>
+                            <a href="javascript:void(0)" class="btn border-0 shadow-none ms-2">SignUp</a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main role="main">
+        <section class="login-page-section mt-80">
+            <div class="container-fluid">
+                <div class="row justify-content-around align-items-center">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="mb-4">
+                            <h1 class="">
+                                Welcome back!
+                                <span><img class="img-fluid waving-hand" src="img/welcomehand.svg" alt="waving-hand"
+                                        loading="lazy" /></span>
+                            </h1>
+                            <p class="fw-400">Login to your account</p>
+                        </div>
+                        <div class="login-form-box">
+                            <div class="mb-3">
+                                <div class="email-input-box">
+                                    <input type="email" class="form-control email-input shadow-none"
+                                        id="exampleFormControlInput1" placeholder="Email" />
+                                </div>
+                            </div>
+                            <div class="mb-md-5 mb-3">
+                                <div class="password-input-box">
+                                    <input type="password" id="password" class="form-control shadow-none"
+                                        id="exampleFormControlInput2" placeholder="Password" />
+                                    <div class="password-input-box-absolute">
+                                        <a href="javascript:void(0)" id="togglePassword">
+                                            <i class="fa-solid fa-eye-slash text-dark"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="text-end">Forgot Password?</p>
+                            </div>
+                            <div class="mb-3 login-btn text-center">
+                                <a href="index.html" class="btn shadow-none bg-warning-color">Sign In</a>
+                            </div>
+                            <div class="text-center">
+                                <p>
+                                    Don’t have account?
+                                    <a href="index.html" class="text-dark text-decoration-none fw-bold">Create
+                                        Now</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-7 p-0">
+                        <div>
+                            <img class="img-fluid" src="img/signin.png" alt="signin" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/bootstrap.bundle.js"></script>
+
+
+
+    <script>
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            const passwordInput = document.getElementById("password");
+            const icon = this.querySelector("i");
+
+            // Toggle input type
+            const isPassword = passwordInput.type === "password";
+            passwordInput.type = isPassword ? "text" : "password";
+
+            // Toggle icon class
+            icon.classList.toggle("fa-eye");
+            icon.classList.toggle("fa-eye-slash");
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Video Section Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <style>
+        .video-section {
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 1;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .video-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            text-align: center;
+        }
+
+        .video-content h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-primary-custom {
+            background-color: #ff6b6b;
+            border-color: #ff6b6b;
+            padding: 15px 35px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #ff5252;
+            border-color: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-outline-custom {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 15px 35px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline-custom:hover {
+            background-color: white;
+            color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 4;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .play-button i {
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+  
+
+            .video-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .video-content p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .btn-primary-custom,
+            .btn-outline-custom {
+                width: 100%;
+                margin-bottom: 15px;
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .play-button {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .play-button i {
+                font-size: 1rem;
+            }
+
+            .navbar-collapse {
+                margin-top: 1rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 5px 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .video-content h2 {
+                font-size: 2rem;
+            }
+
+            .video-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <!-- Video Background -->
+        <video class="video-background" autoplay muted loop>
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Video Overlay -->
+        <div class="video-overlay"></div>
+
+        <!-- Play/Pause Button -->
+        <button class="play-button" id="playPauseBtn">
+            <i class="bi bi-pause-fill" id="playPauseIcon"></i>
+        </button>
+
+        <!-- Video Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="video-content">
+                        <h2>Experience Innovation in Motion</h2>
+                        <p>Watch our story unfold through cutting-edge technology and creative excellence. We bring your
+                            vision to life with stunning visual experiences and unmatched quality.</p>
+                        <div class="video-buttons">
+                            <a href="index.html"> <button class="btn btn-primary-custom me-3">Home</button>
+                            </a> <a href=""><button class="btn btn-outline-custom">Our Story</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
