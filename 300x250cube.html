@@ -1,131 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cube Rotation Banner Ad</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flip Creative</title>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-        .ad-container {
-            width: 300px;
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
+    .ad-container {
+      width: 300px;
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
 
-        .ad-cube {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform-style: preserve-3d;
-            transition: transform 1s ease-in-out;
-            transform: rotateY(0deg);
-            transform-origin: center center;
-        }
+    .ad-cube {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 1s ease-in-out;
+    }
 
-        /* Cube faces */
-        .cube-face {
-            position: absolute;
-            width: 300px;
-            height: 250px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            border-radius: 8px;
-        }
+    .cube-face {
+      position: absolute;
+      width: 300px;
+      height: 250px;
+      backface-visibility: hidden;
+      pointer-events: none;
+    }
 
-        .cube-face a {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
+    .cube-face a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
-        .cube-face img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+    .cube-face img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
-        /* Position each face of the cube */
-        .face-front {
-            transform: translateZ(150px);
-        }
-
-        .face-right {
-            transform: rotateY(90deg) translateZ(150px);
-        }
-
-        .face-back {
-            transform: rotateY(180deg) translateZ(150px);
-        }
-
-        .face-left {
-            transform: rotateY(-90deg) translateZ(150px);
-        }
-    </style>
+    .face-1 { transform: rotateY(0deg) translateZ(150px); }
+    .face-2 { transform: rotateY(90deg) translateZ(150px); }
+    .face-3 { transform: rotateY(180deg) translateZ(150px); }
+    .face-4 { transform: rotateY(270deg) translateZ(150px); }
+  </style>
 </head>
-<body>
-    <div class="ad-container">
-        <div class="ad-cube" id="adCube">
-            
-            <!-- Creative 1 - Zepto -->
-            <div class="cube-face face-front">
-                <a href="https://example.com/zepto" target="_blank">
-                    <img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=300&h=250&fit=crop" alt="Creative 1">
-                </a>
-            </div>
-            
-            <!-- Creative 2 - Swiggy -->
-            <div class="cube-face face-right">
-                <a href="https://example.com/swiggy" target="_blank">
-                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=250&fit=crop" alt="Creative 2">
-                </a>
-            </div>
-            
-            <!-- Creative 3 - Blinkit -->
-            <div class="cube-face face-back">
-                <a href="https://example.com/blinkit" target="_blank">
-                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&h=250&fit=crop" alt="Creative 3">
-                </a>
-            </div>
-            
-            <!-- Creative 4 - PhonePe -->
-            <div class="cube-face face-left">
-                <a href="https://example.com/phonepe" target="_blank">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&h=250&fit=crop" alt="Creative 4">
-                </a>
-            </div>
 
-        </div>
+<body>
+
+<div class="ad-container" id="adContainer">
+  <div class="ad-cube" id="adCube">
+
+    <div class="cube-face face-1" data-creative="0">
+      <a href="https://play.google.com/store/apps/details?id=com.coindcx.btc&hl=en_AU" data-impression="https://tracking.com/i1">
+        <img src="https://ik.imagekit.io/gku4adhog/CoinDcx%20gif.gif" alt="CoinDcx" loading="lazy">
+      </a>
     </div>
 
-    <script>
-        const adCube = document.getElementById('adCube');
-        const ROTATION_INTERVAL = 3000; 
-        let rotationDegree = 0;
+    <div class="cube-face face-2" data-creative="1">
+      <a href="https://play.google.com/store/apps/details?id=com.coinswitch.kuber&hl=en_AU" data-impression="https://tracking.com/i2">
+        <img src="https://ik.imagekit.io/gku4adhog/CoinSwitch%20gif.gif" alt="CoinDcx" loading="lazy">
+      </a>
+    </div>
 
-        function rotateCube() {
-            rotationDegree -= 90;
-            adCube.style.transform = `rotateY(${rotationDegree}deg)`;
-        }
+    <div class="cube-face face-3" data-creative="2">
+      <a href="https://www.eventcinemas.com.au/Movie/Dhurandhar" data-impression="https://tracking.com/i3">
+        <img src="https://ik.imagekit.io/gku4adhog/Dhurandhar%20GIF.gif" alt="CoinDcx" loading="lazy">
+      </a>
+    </div>
 
-        setInterval(rotateCube, ROTATION_INTERVAL);
-    </script>
+    <div class="cube-face face-4" data-creative="3">
+      <a href="https://play.google.com/store/apps/details?id=com.coinswitch.kuber&hl=en_AU" data-impression="https://tracking.com/i4">
+        <img src="https://ik.imagekit.io/gku4adhog/BGMI%20GIF.gif" alt="CoinDcx" loading="lazy">
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const firedImpressions = [];
+
+  function fireImpression(index) {
+    if (firedImpressions.includes(index)) return;
+    const face = document.querySelector(`[data-creative="${index}"]`);
+    if (!face) return;
+
+    const url = face.querySelector("a").dataset.impression;
+    if (url) {
+      new Image().src = url;
+      firedImpressions.push(index);
+      console.log("Impression fired:", index);
+    }
+  }
+
+  fireImpression(0);
+
+  const adCube = document.getElementById("adCube");
+  const adContainer = document.getElementById("adContainer");
+  const faces = document.querySelectorAll(".cube-face");
+
+  const ROTATION_INTERVAL = 2000;
+  const totalFaces = 4;
+
+  let rotationDegree = 0;
+  let currentFace = 0;
+  let rotationTimer = null;
+
+  function updatePointerEvents(activeIndex) {
+    faces.forEach((face, i) => {
+      face.style.pointerEvents = i === activeIndex ? "auto" : "none";
+    });
+  }
+
+  updatePointerEvents(0);
+
+  function rotateCube() {
+    stopRotation(); 
+
+    rotationDegree -= 90;
+    adCube.style.transform = `rotateY(${rotationDegree}deg)`;
+    currentFace = (currentFace + 1) % totalFaces;
+
+    adCube.addEventListener("transitionend", function handler() {
+      updatePointerEvents(currentFace);
+      fireImpression(currentFace);
+      startRotation(); 
+      adCube.removeEventListener("transitionend", handler);
+    });
+  }
+
+  function startRotation() {
+    if (rotationTimer) return;
+    rotationTimer = setInterval(rotateCube, ROTATION_INTERVAL);
+  }
+
+  function stopRotation() {
+    clearInterval(rotationTimer);
+    rotationTimer = null;
+  }
+
+  startRotation();
+
+  adContainer.addEventListener("mouseenter", stopRotation);
+  adContainer.addEventListener("mouseleave", startRotation);
+
+  document.addEventListener("click", function (e) {
+    const link = e.target.closest("a[data-impression]");
+    if (!link) return;
+
+    e.preventDefault();
+    stopRotation(); 
+
+    const face = link.closest("[data-creative]");
+    const index = parseInt(face.dataset.creative, 10);
+    fireImpression(index);
+
+    window.open(link.href, "_blank");
+  });
+</script>
+
 </body>
 </html>
