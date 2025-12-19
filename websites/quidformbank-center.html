@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save My EMI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Required CSS Styles -->
+    <style>
+        .mt-80 {
+            margin-top: 80px;
+        }
+
+        .debt-reduction-card {
+            max-width: 380px;
+            position: relative;
+            height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .card-scroll {
+            padding-bottom: 90px;
+        }
+
+        /* ===== FIXED BUTTON INSIDE FORM ===== */
+        .form-fixed-btn {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 380px;
+            background: #fff;
+            padding: 10px 0;
+            z-index: 999;
+        }
+
+        .font-dbet-text {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .debt-reduction-card .fetched-badge {
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        .debt-reduction-card .debt-section {
+            border: 1px solid #59c700;
+            border-radius: 12px;
+            padding: 10px 16px;
+            background: #fff;
+        }
+
+        .debt-reduction-card .loan-item {
+            padding: 6px 10px;
+            background-color: #9ca3af0f;
+        }
+
+        .debt-reduction-card .loan-info {
+            margin-bottom: 10px;
+        }
+
+
+        .debt-reduction-card .detail-label {
+            color: #6b7280;
+        }
+
+        .debt-reduction-card .detail-value {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .debt-reduction-card .loan-amount-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .debt-reduction-card .emi-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .debt-reduction-card .emi-label {
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        .debt-reduction-card .emi-value {
+            font-size: 13px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .debt-reduction-card .outstanding-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .debt-reduction-card .outstanding-label {
+            font-size: 10px;
+            color: #0056aa;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .debt-reduction-card .outstanding-amount {
+            font-size: 14px;
+            color: #0056aa;
+            font-weight: 700;
+        }
+
+
+        .debt-reduction-card .multiple-loans-badge,
+        .debt-reduction-card .high-interest-badge {
+            margin-top: 8px;
+            padding: 6px 10px;
+            background: white;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #1c86ee;
+            display: inline-block;
+        }
+
+        .debt-reduction-card .disclaimer-text {
+            font-size: 11px;
+            color: #9ca3af;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .debt-reduction-card .savings-box {
+            background: #ecfdf5;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .debt-reduction-card .current-emi,
+        .debt-reduction-card .new-emi {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .debt-reduction-card .current-amount {
+            font-size: 13px;
+            color: #6b7280;
+            font-weight: 600;
+            text-decoration: line-through;
+        }
+
+        .debt-reduction-card .new-amount {
+            font-size: 18px;
+            color: #59c700;
+            font-weight: 700;
+        }
+
+        .debt-reduction-card .savings-highlight {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .debt-reduction-card .check-icon {
+            color: #16a34a;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .debt-reduction-card .savings-text {
+            font-size: 13px;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        .debt-reduction-card .yearly-savings {
+            font-size: 12px;
+            color: #59c700;
+            margin: 0;
+        }
+
+        .debt-reduction-card .btn-save-more {
+            background: #59c700;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+        }
+
+        .debt-reduction-card .btn-save-more:hover {
+                      background: #59c700;
+
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(22, 163, 74, 0.4);
+        }
+
+        .debt-reduction-card .footer-note {
+            font-size: 11px;
+            color: #6b7280;
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md fixed-top bdr-btm bg-white">
+            <div class="container">
+                <a class="navbar-brand  fw-700 font-18" href="javascript:void(0)">
+                    <img src="https://ik.imagekit.io/gku4adhog/Quid_Logo-Primeitalic%20(4).svg" width="120" alt="">
+                </a>
+
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        <!-- Hero Section -->
+        <section class="mt-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 m-auto">
+                        <div class="debt-reduction-card m-auto">
+                            <div class="card-scroll">
+                                <div class="debt-header mb-3">
+                                    <h6 class="fw-600">Reduce Your Debt, Save More 🔥</h6>
+                                    <p class="font-dbet-text">
+                                        If you are paying high interest on your <strong>Personal Loan</strong> or
+                                        <strong>Credit Card</strong> outstanding, Quid can help you save.
+                                    </p>
+                                </div>
+
+                                <div class="debt-section mb-3">
+                                    <div class="section-header d-flex justify-content-between align-items-center mb-2">
+                                        <h6 class="section-title mb-0 font-15 fw-600">Personal Loans</h6>
+                                        <span class="fetched-badge">2 Loans • Fetched via CIBIL 🔥✓</span>
+                                    </div>
+
+                                    <!-- HDFC Bank Loan -->
+                                    <div class="loan-item  bdr-10 mb-2">
+                                        <div class="loan-info d-flex justify-content-between align-items-center">
+                                            <h6 class=" font-14 fw-600 mb-0">HDFC Bank</h6>
+                                            <div class="loan-details d-flex gap-2 font-12">
+                                                <span class="detail-label">Interest</span>
+                                                <span class="detail-value">14.5%</span>
+                                            </div>
+                                        </div>
+                                        <div class="loan-amount-section">
+                                            <div class="emi-box">
+                                                <span class="emi-label">EMI</span>
+                                                <span class="emi-value">₹ 1,500</span>
+                                            </div>
+                                            <div class="outstanding-box">
+                                                <span class="outstanding-label">OUTSTANDING</span>
+                                                <span class="outstanding-amount">₹ 1,50,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ICICI Bank Loan -->
+                                    <div class="loan-item bdr-10 mb-2">
+                                        <div class="loan-info d-flex justify-content-between align-items-center">
+                                            <h6 class="font-14 fw-600 mb-2">ICICI Bank</h6>
+                                            <div class="loan-details d-flex gap-2 font-12">
+                                                <span class="detail-label">Interest</span>
+                                                <span class="detail-value">16.2%</span>
+                                            </div>
+                                        </div>
+                                        <div class="loan-amount-section">
+                                            <div class="emi-box">
+                                                <span class="emi-label">EMI</span>
+                                                <span class="emi-value">₹ 2,800</span>
+                                            </div>
+                                            <div class="outstanding-box">
+                                                <span class="outstanding-label">OUTSTANDING</span>
+                                                <span class="outstanding-amount">₹ 1,00,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <!-- Credit Cards Section -->
+                                <div class="debt-section mb-2">
+                                    <div class="section-header d-flex justify-content-between align-items-center mb-2">
+                                        <h6 class="section-title mb-0 font-15 fw-600">Credit Cards</h6>
+                                        <span class="fetched-badge">2 Cards • Fetched via CIBIL 🔥✓</span>
+                                    </div>
+
+                                    <!-- Axis Bank Card -->
+                                    <div class="loan-item  bdr-10 mb-2">
+                                        <div class="loan-info d-flex justify-content-between align-items-center">
+
+                                            <h6 class="font-14 fw-600 mb-2">Axis Bank</h6>
+                                            <div class="loan-details d-flex gap-2 font-12">
+                                                <span class="detail-label">Interest</span>
+                                                <span class="detail-value">36% p.a.</span>
+                                            </div>
+                                        </div>
+                                        <div class="loan-amount-section">
+                                            <div class="emi-box">
+                                                <span class="emi-label">Min EMI</span>
+                                                <span class="emi-value">₹ 2,500</span>
+                                            </div>
+                                            <div class="outstanding-box">
+                                                <span class="outstanding-label">OUTSTANDING</span>
+                                                <span class="outstanding-amount">₹ 50,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- SBI Card -->
+                                    <div class="loan-item  bdr-10 mb-2">
+                                        <div class="loan-info d-flex justify-content-between align-items-center">
+
+                                            <h6 class="font-14 fw-600 mb-2">SBI Card</h6>
+                                            <div class="loan-details d-flex gap-2 font-12">
+                                                <span class="detail-label">Interest</span>
+                                                <span class="detail-value">42% p.a.</span>
+                                            </div>
+                                        </div>
+                                        <div class="loan-amount-section">
+                                            <div class="emi-box">
+                                                <span class="emi-label">Min EMI</span>
+                                                <span class="emi-value">₹ 1,800</span>
+                                            </div>
+                                            <div class="outstanding-box">
+                                                <span class="outstanding-label">OUTSTANDING</span>
+                                                <span class="outstanding-amount">₹ 30,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <!-- Disclaimer -->
+                                <p class="disclaimer-text">
+                                    Loan and card details are securely fetched after your consent
+                                </p>
+
+                                <!-- Savings Summary Box -->
+                                <div class="savings-box mb-4">
+                                    <div class="current-emi mb-3">
+                                        <span class="savings-label font-12 fw-500">Your current total monthly
+                                            EMI:</span>
+                                        <span class="current-amount">₹10,600 /month</span>
+                                    </div>
+
+                                    <div class="new-emi mb-3">
+                                        <span class="savings-label font-12 fw-500">Monthly EMI with Quid:</span>
+                                        <span class="new-amount">₹ 7,800 / month</span>
+                                    </div>
+
+                                    <div class="savings-highlight">
+                                        <span class="check-icon">✓</span>
+                                        <span class="savings-text">
+                                            You save <strong>₹ 2,800 every month</strong> by reducing interest on your
+                                            existing EMIs
+                                        </span>
+                                    </div>
+
+                                    <p class="yearly-savings text-center">
+                                        That's <strong>₹ 33,600 savings in a year</strong>
+                                    </p>
+                                </div>
+
+                                <!-- CTA Button -->
+                                <div class="form-fixed-btn">
+                                    <button type="button" class="btn-save-more w-100 mb-3">
+                                        Check How Much I Can Save
+                                    </button>
+                                </div>
+
+                                <!-- Footer Note -->
+                                <p class="footer-note">
+                                    Takes less than 2 minutes • No impact on credit score
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script src="./js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
